@@ -20,7 +20,7 @@ app.post(
   express.raw({ type: "application/json" }),
   stripeWebhook
 );
-app.all("/api/auth/*", toNodeHandler(auth));
+app.all("/api/auth/{*any}", toNodeHandler(auth));
 app.use(express.json({ limit: "50mb" }));
 
 app.get("/", (req: Request, res: Response) => {
