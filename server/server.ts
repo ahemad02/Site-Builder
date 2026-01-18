@@ -20,10 +20,8 @@ app.post(
   express.raw({ type: "application/json" }),
   stripeWebhook
 );
-app.all("/api/auth/{*any}", toNodeHandler(auth));
+app.all("/api/auth/*", toNodeHandler(auth));
 app.use(express.json({ limit: "50mb" }));
-
-const port = 3000;
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Server is Live!");
@@ -31,3 +29,5 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/user", userRouter);
 app.use("/api/project", projectRouter);
+
+export default app;
