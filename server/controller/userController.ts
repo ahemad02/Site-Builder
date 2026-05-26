@@ -77,7 +77,7 @@ export const createUserProject = async (req: Request, res: Response) => {
     res.status(200).json({ projectId: project.id });
 
     const promptEnhanceResoponse = await openai.chat.completions.create({
-      model: "z-ai/glm-4.5-air:free",
+      model: "openai/gpt-oss-120b:free",
       messages: [
         {
           role: "system",
@@ -120,7 +120,7 @@ export const createUserProject = async (req: Request, res: Response) => {
     });
 
     const codeGenerationResponse = await openai.chat.completions.create({
-      model: "z-ai/glm-4.5-air:free",
+      model: "openai/gpt-oss-120b:free",
       messages: [
         {
           role: "system",
